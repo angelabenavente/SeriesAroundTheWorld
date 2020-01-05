@@ -21,7 +21,7 @@ async function handlerSearch(event) {
   listItemsContainer.classList.add('main__lists__searchList-container');
   const searchListTitle = document.createElement('h2');
   searchListTitle.classList.add('main__lists__searchList-searchListTitle');
-  searchListTitle.innerHTML = `We find ${series.length} results`;
+  searchListTitle.innerHTML = `${series.length} titles`;
   searchListElement.appendChild(searchListTitle);
 
   for (let serieItem of series) {
@@ -37,10 +37,51 @@ async function handlerSearch(event) {
       liElement.classList.add('favorite');
       console.log(serieId);
     }
+ 
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('main__lists__searchList-container-liContainer-imageContainer')
+
+    const summary = document.createElement('p');
+    summary.classList.add('main__lists__searchList-container-liContainer-description-summary');
+    if (serieItem.show.summary.length > 300) {
+      summary.innerHTML = `${serieItem.show.summary.substr(0,300)}...`;
+    } else {
+      summary.innerHTML = `${serieItem.show.summary}`;
+    }
+
+    const genreContainer = document.createElement('div');
+    genreContainer.classList.add('main__lists__searchList-container-liContainer-description-genre');
+    const genres = serieItem.show.genres;
+    let genre = ''
+    for (genreLi of genre) {
+      genre = genre + genreLi;
+    }
+    genreContainer.innerHTML= `${genre}`
+
+    const language = document.createElement('div');
+    language.classList.add('main__lists__searchList-container-liContainer-description-language');
+    language.innerHTML = `Language: ${serieItem.show.language}`
+
+    const average = document.createElement('div');
+    average.classList.add('main__lists__searchList-container-liContainer-description-average');
+    if(serieItem.show.rating.average !== null) {
+      average.innerHTML = `${serieItem.show.rating.average}`
+      liElement.style.order = '0';
+    } else {
+      average.innerHTML = `Not average yet`
+      liElement.style.order = '1';
+    }
+
+    //average.innerHTML=`${serieItem.show.rating.average}`;
+    console.log(serieItem.show.rating)
+
+    const headerContainer = document.createElement('div');
+    headerContainer.classList.add('main__lists__searchList-container-liContainer-description-header');
+    
 
     const span = document.createElement('span');
-    span.classList.add('main__lists__searchList-container-liContainer-span');
-    //span.innerHTML = serieItem.show.name;
+    span.classList.add('main__lists__searchList-container-liContainer-description-header-span');
+    span.innerHTML = serieItem.show.name;
     serieObject.name = serieItem.show.name;
     const imageElement = document.createElement('img');
     if (serieItem.show.image === null) {
@@ -50,10 +91,20 @@ async function handlerSearch(event) {
       imageElement.src = serieItem.show.image.medium;
       serieObject.image = serieItem.show.image.medium;
     }
-    liElement.appendChild(span);
     liElement.id = serieId;
     //liElement.appendChild(premiere);
-    liElement.appendChild(imageElement);
+    const description = document.createElement('div');
+    description.classList.add('main__lists__searchList-container-liContainer-description')
+    headerContainer.appendChild(span);
+    headerContainer.appendChild(average);
+    description.appendChild(headerContainer);
+    description.appendChild(summary);
+    description.appendChild(genreContainer);
+    description.appendChild(language);
+    
+    imageContainer.appendChild(imageElement);
+    liElement.appendChild(imageContainer);
+    liElement.appendChild(description);
     listItemsContainer.appendChild(liElement);
     searchListElement.appendChild(listItemsContainer);
     console.log(serieObject);
@@ -131,7 +182,7 @@ function favoriteShow(event) {
     const imageElement = serieElement.querySelector('img');
     const titleElement = serieElement.querySelector('.main__lists__searchList-container-liContainer-span');
 
-    serieObject.title = titleElement.innerHTML;
+    //serieObject.title = titleElement.innerHTML;
     serieObject.image = imageElement.src;
     serieObject.id = serieId;
 

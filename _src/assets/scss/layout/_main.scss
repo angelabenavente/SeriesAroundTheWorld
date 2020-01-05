@@ -28,11 +28,11 @@ height: 0%;
         margin-top: rem(35);
         margin-bottom: rem(10);
         text-align: center;
-        color: black;
+        color: #babcc1;
         text-transform: uppercase;
         font-family: 'Righteous', cursive;
         letter-spacing: 3px;
-        font-size: rem(20);
+        font-size: rem(12);
       }
       &-container{
         display: flex;
@@ -41,24 +41,38 @@ height: 0%;
         justify-content: center;
         padding: 0 15px;
         &-liContainer {
-          text-transform: uppercase;
+          //text-transform: uppercase;
           border-radius: 5px;
           //padding: rem(16) rem(20) rem(20);
           margin: rem(15) rem(12) rem(20);
-          background-color: transparent;
+          background-color: #16252f;
           color: white;
           display: flex;
-          flex-direction: column;
-          width: 180px;
-          //height: 260px;
-          //height: 250px;
-
+          flex-direction: row;
+          width: 90%;
+          height: 295px;
           cursor: pointer;
-          &-span {
-            // padding: rem(5) rem(0) rem(15);
-            font-family: $principalFont;
-            text-align: center;
-            font-weight: 700;
+          &imageContainer {
+            height: 214px;
+          }
+          &-description {
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            &-header{
+              width: 100%;
+              &-span {
+                width: 100%;
+                display: block;
+                //text-decoration-line: underline;
+                // padding: rem(5) rem(0) rem(15);
+                border-bottom: 2px solid grey;
+                font-family: $principalFont;
+                font-weight: 700;
+                margin-bottom: 5px;
+              }
+            }
             img {
               width: 180px;
               height: 240px;
@@ -87,29 +101,29 @@ height: 0%;
       &-listTitle {
         text-transform: uppercase;
         margin-left:rem(15);
-        color: black;
+        color: #babcc1;
+        //color: #eec11b;
         margin: rem(10) rem(0) rem(15);
         text-align: center;
         font-family: 'Righteous', cursive;
         letter-spacing: 3px;
-        font-size: rem(20);
+        font-size: rem(12);
       }
       &-favoriteItem {
         border-radius: rem(5);
-        width: fit-content;
-        height: fit-content;
+        width: rem(206); 
+        height: 295px;
         margin: rem(40) rem(0) rem(10);
         //background-color:transparent;
         display: flex;
         justify-content: center;
         flex-direction: column;
-        margin: rem(15);
-        background-color: rgba(255, 255, 255, 0.281);
-        color: #000000e3;
+        margin: rem(10);
+        background-color: #16252f;
+        color: #babcc1;
         box-shadow: 2px 2px 1px #0c0c0c;
         @include media ($tablet){
-          height: auto;
-          max-width: rem(186); 
+          max-width: rem(206); 
           padding: rem(0) rem(0) rem(0);         
         }
         &-header {
@@ -125,24 +139,24 @@ height: 0%;
           &-closeElement {
             cursor: pointer;
             align-self: flex-end;
-            padding: rem(8) rem(5) rem(5);
+            padding: rem(9) rem(10) rem(8);
             text-align: right;
-            color: black;
+            color: #babcc1;
+            color: #eec11b;
             @include media ($tablet){
-              padding: rem(8) rem(5) rem(5);         
+              padding: rem(9) rem(10) rem(8);         
             }
 
             &:hover {
               transform: scale(1.15);
-              text-shadow: rem(1) rem(1) orange;
+              color: #eec11b;
             }
           }
           &-image {
-            margin: auto;
-            width: 180px;
-            height: 210px;
+            width: 206px;
+            height: 260px;
             @include media ($tablet){
-              max-width: rem(145);         
+              //max-width: rem(145);         
             }
           }
         }

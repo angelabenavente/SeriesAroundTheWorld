@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   padding: rem(10) rem(20) rem(5);
-  background-color: #0a0a0a;
+  background-color: #16252f;
 
   &__webTitle {
     font-family: 'Righteous', cursive;
@@ -17,7 +17,7 @@
     letter-spacing: 3px;
     font-size: rem(25);
     display: inline-block;
-    color: white;
+    color: #eec11b;
     margin-bottom: 5px;
     @include media ($tablet){
       font-size: rem(35);
@@ -45,8 +45,9 @@
       padding-left: rem(10);
       margin-right: rem(10);
       border: 0;
-      border: rem(1.5) solid #309bd1;
-      background: linear-gradient(45deg, #495643 0%, #49565d 100%);
+      border: 2px solid #2585b545;
+      //background: linear-gradient(45deg, #495643 0%, #49565d 100%);
+      background-color: #0c141d;
       border-radius: rem(10);
     }
     &__submit {
@@ -57,7 +58,8 @@
       color: $white;
       border:none;
       border-radius: rem(10);
-      background-color: #309bd1;
+      color: black;
+      background-color: #eec11b;
       cursor: pointer;
     }
   }
