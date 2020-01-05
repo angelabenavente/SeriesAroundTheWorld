@@ -14,7 +14,7 @@ async function handlerSearch(event) {
 
   header.style.height = "140px";
 
-  const response = await fetch(`http://api.tvmaze.com/search/shows?q=${search}`)
+  const response = await fetch(`https://api.tvmaze.com/search/shows?q=${search}`)
   const series = await response.json();
 
   const listItemsContainer = document.createElement('div');
@@ -36,8 +36,7 @@ async function handlerSearch(event) {
       liElement.classList.add('favorite');
       console.log(serieId);
     }
-    //const premiere = document.createElement('p');
-    //premiere.innerHTML = serieItem.show.premiered;
+
     const span = document.createElement('span');
     span.classList.add('main__lists__searchList-container-liContainer-span');
     span.innerHTML = serieItem.show.name;
@@ -66,65 +65,6 @@ itemLi.addEventListener('click', favoriteShow);
 
 formElement.addEventListener('click', ShowNumberResults);
 }
-
-  /* fetch(`http://api.tvmaze.com/search/shows?q=${search}`)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(
-      function getData (series) {
-        const listItemsContainer = document.createElement('div');
-        listItemsContainer.classList.add('main__lists__searchList-container');
-        const searchListTitle = document.createElement('h2');
-        searchListTitle.classList.add('main__lists__searchList-searchListTitle');
-        searchListTitle.innerHTML = 'Resultados de búsqueda:';
-        searchListElement.appendChild(searchListTitle);
-        for (let serieItem of series) {
-          const serieObject = {};
-          const serieId = `${serieItem.show.id}`; // convertimos el id a string
-
-          const liElement = document.createElement('li');
-          liElement.classList.add('main__lists__searchList-container-liContainer');
-
-          //Comprobamos los items guardados en favoritos en localstore y les añadimos la clase favorite
-          if (isFavSerie(serieId)) {
-            liElement.classList.add('favorite');
-            console.log(serieId);
-          }
-          const premiere = document.createElement('p');
-          premiere.innerHTML = serieItem.show.premiered;
-          const span = document.createElement('span');
-          span.classList.add('main__lists__searchList-container-liContainer-span');
-          span.innerHTML = serieItem.show.name;
-          serieObject.name = serieItem.show.name;
-          const imageElement = document.createElement('img');
-          if (serieItem.show.image === null) {
-            imageElement.src = "https://via.placeholder.com/210x295/868282/fff/?text=SERIE%20SIN%20IMAGEN"
-            serieObject.image = imageElement.src;
-          } else {
-            imageElement.src = serieItem.show.image.medium;
-            serieObject.image = serieItem.show.image.medium;
-          }
-          liElement.appendChild(span);
-          liElement.id = serieId;
-          liElement.appendChild(premiere);
-          liElement.appendChild(imageElement);
-          listItemsContainer.appendChild(liElement);
-          searchListElement.appendChild(listItemsContainer);
-          console.log(serieObject);
-          
-
-        }
-    const numberResults = document.createElement('h3');
-    numberResults.innerHTML = `Hemos encontrado ${series.length}.`;
-    searchListElement.appendChild(numberResults);
-    const liElements = document.querySelectorAll('.main__lists__searchList-container-liContainer');
-    for (const itemLi of liElements) {
-      itemLi.addEventListener('click', favoriteShow);
-
-    numberResults.addEventListener('click', ShowNumberResults);
-    }
-  }); */
   return false;
 }
 
