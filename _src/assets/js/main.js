@@ -25,6 +25,7 @@ async function handlerSearch(event) {
   searchListElement.appendChild(searchListTitle);
 
   for (let serieItem of series) {
+    if(serieItem.show.image !== null) {
     const serieObject = {};
     const serieId = `${serieItem.show.id}`; // convertimos el id a string
 
@@ -39,7 +40,7 @@ async function handlerSearch(event) {
 
     const span = document.createElement('span');
     span.classList.add('main__lists__searchList-container-liContainer-span');
-    span.innerHTML = serieItem.show.name;
+    //span.innerHTML = serieItem.show.name;
     serieObject.name = serieItem.show.name;
     const imageElement = document.createElement('img');
     if (serieItem.show.image === null) {
@@ -56,6 +57,7 @@ async function handlerSearch(event) {
     listItemsContainer.appendChild(liElement);
     searchListElement.appendChild(listItemsContainer);
     console.log(serieObject);
+  }
   }
   
 
@@ -169,9 +171,9 @@ function printFavoriteList(favSeriesArray){
   closeFavoriteElement.innerHTML = '<i class="fas fa-times-circle"></i>'
 
   //Creamos el span con el nombre de la serie
-  const favoriteSearchedTitle = document.createElement('span');
-  favoriteSearchedTitle.classList.add('main__lists__favoriteList-favoriteItem-header-span');
-  favoriteSearchedTitle.innerHTML = serie.title;
+  // const favoriteSearchedTitle = document.createElement('span');
+  // favoriteSearchedTitle.classList.add('main__lists__favoriteList-favoriteItem-header-span');
+  // favoriteSearchedTitle.innerHTML = serie.title;
 
   //Creamos la imagen
   const favoriteSearchedImage = document.createElement('img');
@@ -180,7 +182,7 @@ function printFavoriteList(favSeriesArray){
 
   //Introducimos los elementos en sus respectivos padres
   favoriteSearchedItem.appendChild(closeFavoriteElement);
-  favoriteSearchedItem.appendChild(favoriteSearchedTitle);
+  //favoriteSearchedItem.appendChild(favoriteSearchedTitle);
   favoriteSearchedItem.appendChild(headerLiContainer);
   favoriteSearchedItem.appendChild(favoriteSearchedImage);
   favoriteSearched.appendChild(favoriteSearchedItem);
@@ -213,15 +215,14 @@ function removeFavoriteClass (event) {
      getFavorites()
   }
 
+  const favSeries = JSON.parse(localStorage.getItem('favorites'));
 
 function getFavorites() {
   const favSeries = JSON.parse(localStorage.getItem('favorites'));
-  if (favSeries.length > 0) {
+  if (favSeries.length > 0 ) {
     favSeriesArray = favSeries;
     header.style.height = "140px";
-  } else {
-    header.style.height = "100%";
-  }
+  } 
   //Para que la lista no se pinte más de una vez, la reemplazamos borrándola antes (comprobamos primero que exista la lista de favoritos)
   if(listDivElement.childNodes.length===3) {
   //console.log(listDivElement.childNodes);
