@@ -1,0 +1,12 @@
+@function rem($pixels) {
+  @return ($pixels / $defaultFontSize * 1rem);
+}
+
+
+@mixin media ($width) {
+  @media all and (min-width:$width){
+      @content
+  }
+}
+
+$tablet: 560px;
