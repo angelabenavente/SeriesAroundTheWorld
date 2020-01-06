@@ -59,18 +59,35 @@ height: 0%;
             padding: 15px 20px;
             display: flex;
             flex-direction: column;
-            justify-content: left;
+            justify-content: space-between;
             &-header{
               width: 100%;
               &-span {
+                display: flex;
+                flex-direction: row;
                 width: 100%;
                 display: block;
+                padding-bottom: 5px;
                 //text-decoration-line: underline;
                 // padding: rem(5) rem(0) rem(15);
                 border-bottom: 2px solid grey;
                 font-family: $principalFont;
                 font-weight: 700;
-                margin-bottom: 5px;
+                margin-bottom: 8px;
+              }
+              &-average {
+                .star {
+                  color: #eec11b;
+                  font-size: 16px;
+                  margin-bottom: 8px;
+                }
+              }
+            }
+            &-summary {
+              display: flex;
+              flex-direction: column;
+              &-info {
+                margin: 0;
               }
             }
             img {
@@ -170,3 +187,4 @@ height: 0%;
   color: #000000e3;
   box-shadow: 2px 1px 2px #0c0c0c;
 }
+

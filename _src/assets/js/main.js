@@ -42,9 +42,9 @@ async function handlerSearch(event) {
     imageContainer.classList.add('main__lists__searchList-container-liContainer-imageContainer')
 
     const summary = document.createElement('p');
-    summary.classList.add('main__lists__searchList-container-liContainer-description-summary');
-    if (serieItem.show.summary.length > 300) {
-      summary.innerHTML = `${serieItem.show.summary.substr(0,300)}...`;
+    summary.classList.add('main__lists__searchList-container-liContainer-description-summary-info');
+    if (serieItem.show.summary.length > 400) {
+      summary.innerHTML = `${serieItem.show.summary.substr(0,400)}...`;
     } else {
       summary.innerHTML = `${serieItem.show.summary}`;
     }
@@ -59,14 +59,49 @@ async function handlerSearch(event) {
     genreContainer.innerHTML= `${genre}`
 
     const language = document.createElement('div');
-    language.classList.add('main__lists__searchList-container-liContainer-description-language');
+    language.classList.add('main__lists__searchList-container-liContainer-description-header-language');
     language.innerHTML = `Language: ${serieItem.show.language}`
 
     const average = document.createElement('div');
-    average.classList.add('main__lists__searchList-container-liContainer-description-average');
+    average.classList.add('main__lists__searchList-container-liContainer-description-header-average');
     if(serieItem.show.rating.average !== null) {
-      average.innerHTML = `${serieItem.show.rating.average}`
-      liElement.style.order = '0';
+      if(serieItem.show.rating.average <= 1){
+        average.innerHTML = `${serieItem.show.rating.average} <i class="fas star fa-star-half-alt"></i></i><i class="star far fa-star"></i><i class="star far fa-star"></i><i class="star far fa-star"></i><i class="star far fa-star"></i>`
+        liElement.style.order = '0';
+      } else if (serieItem.show.rating.average >= 2 &&   serieItem.show.rating.average < 3) {
+        average.innerHTML = `${serieItem.show.rating.average} <i class="star fas fa-star"></i><i class="star far fa-star"></i><i class="star far fa-star"></i><i class="star far fa-star"></i><i class="star far fa-star"></i>`
+        liElement.style.order = '0';
+      } else if (serieItem.show.rating.average >= 3 &&   serieItem.show.rating.average < 4) {
+        average.innerHTML = `${serieItem.show.rating.average} <i class="star fas fa-star"></i><i class="fas star fa-star-half-alt"></i><i class="star far fa-star"></i><i class="star far fa-star"></i><i class="star far fa-star"></i>`
+        liElement.style.order = '0';
+    
+      } else if (serieItem.show.rating.average >= 4 &&   serieItem.show.rating.average < 5) {
+        average.innerHTML = `${serieItem.show.rating.average} <i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star far fa-star"><i class="star far fa-star"></i><i class="star far fa-star"></i>`
+        liElement.style.order = '0';
+     
+      } else if (serieItem.show.rating.average >= 5 &&   serieItem.show.rating.average < 6) {
+        average.innerHTML = `${serieItem.show.rating.average} <i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="fas star fa-star-half-alt"></i><i class="star far fa-star"></i><i class="star far fa-star"></i>`
+        liElement.style.order = '0';
+     
+      } else if (serieItem.show.rating.average >= 6 &&   serieItem.show.rating.average < 7) {
+        average.innerHTML = `${serieItem.show.rating.average} <i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star far fa-star"></i><i class="star far fa-star"></i>`
+        liElement.style.order = '0';
+     
+      } else if (serieItem.show.rating.average >= 7 &&   serieItem.show.rating.average < 8) {
+        average.innerHTML = `${serieItem.show.rating.average} <i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="fas star fa-star-half-alt"></i><i class="star far fa-star"></i>`
+        liElement.style.order = '0';
+     
+      } else if (serieItem.show.rating.average >= 8 &&   serieItem.show.rating.average < 9) {
+        average.innerHTML = `${serieItem.show.rating.average} <i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star far fa-star"></i>`
+        liElement.style.order = '0';
+     
+      } else if (serieItem.show.rating.average >= 9 &&   serieItem.show.rating.average < 10) {
+        average.innerHTML = `${serieItem.show.rating.average} <i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="fas star fa-star-half-alt"></i>`
+        liElement.style.order = '0';
+      } else if (serieItem.show.rating.average === 10) {
+        average.innerHTML = `${serieItem.show.rating.average} <i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star fas fa-star"></i><i class="star fas fa-star"></i>`
+        liElement.style.order = '0';
+      } 
     } else {
       average.innerHTML = `Not average yet`
       liElement.style.order = '1';
@@ -77,11 +112,15 @@ async function handlerSearch(event) {
 
     const headerContainer = document.createElement('div');
     headerContainer.classList.add('main__lists__searchList-container-liContainer-description-header');
-    
+    const addToFavorite = document.createElement('div');
+    addToFavorite.classList.add('main__lists__searchList-container-liContainer-description-header-addFavorite');
+    addToFavorite.innerHTML = `Add to favorites`;
 
     const span = document.createElement('span');
     span.classList.add('main__lists__searchList-container-liContainer-description-header-span');
     span.innerHTML = serieItem.show.name;
+    span.appendChild(addToFavorite);
+
     serieObject.name = serieItem.show.name;
     const imageElement = document.createElement('img');
     if (serieItem.show.image === null) {
@@ -93,14 +132,18 @@ async function handlerSearch(event) {
     }
     liElement.id = serieId;
     //liElement.appendChild(premiere);
+    const laguageAndSummary = document.createElement('div');
+    laguageAndSummary.classList.add('main__lists__searchList-container-liContainer-description-summary')
     const description = document.createElement('div');
     description.classList.add('main__lists__searchList-container-liContainer-description')
     headerContainer.appendChild(span);
     headerContainer.appendChild(average);
     description.appendChild(headerContainer);
-    description.appendChild(summary);
-    description.appendChild(genreContainer);
-    description.appendChild(language);
+    description.appendChild(laguageAndSummary);
+    headerContainer.appendChild(language);
+    laguageAndSummary.appendChild(summary);
+   
+    
     
     imageContainer.appendChild(imageElement);
     liElement.appendChild(imageContainer);
