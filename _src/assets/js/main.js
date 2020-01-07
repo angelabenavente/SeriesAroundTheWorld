@@ -53,10 +53,12 @@ async function handlerSearch(event) {
     genreContainer.classList.add('main__lists__searchList-container-liContainer-description-genre');
     const genres = serieItem.show.genres;
     let genre = ''
-    for (genreLi of genre) {
-      genre = genre + genreLi;
-    }
-    genreContainer.innerHTML= `${genre}`
+    for (let i = 0; i < genres.length; i++) {
+      genreContainer.innerHTML += genres[i] + ' ';
+        }
+      //genre = `${genre} + '' + ${genre[i]}`;
+    //}
+    //genreContainer.innerHTML= `${genre}`
 
     const language = document.createElement('div');
     language.classList.add('main__lists__searchList-container-liContainer-description-header-language');
@@ -142,6 +144,7 @@ async function handlerSearch(event) {
     description.appendChild(laguageAndSummary);
     headerContainer.appendChild(language);
     laguageAndSummary.appendChild(summary);
+    laguageAndSummary.appendChild(genreContainer);
    
     
     
