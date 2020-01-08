@@ -192,10 +192,26 @@
   width: 100%;
   display: block;
   padding-bottom: 5px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   border-bottom: 2px solid grey;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   margin-bottom: 8px;
+}
+
+.main__lists__searchList-container-liContainer-description-header-span-title {
+  display: inline;
+}
+
+.main__lists__searchList-container-liContainer-description-header-span-addFavorite {
+  display: inline;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 3px;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .main__lists__searchList-container-liContainer-description-header-average .star {

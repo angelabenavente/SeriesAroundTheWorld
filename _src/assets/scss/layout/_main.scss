@@ -68,12 +68,24 @@ height: 0%;
                 width: 100%;
                 display: block;
                 padding-bottom: 5px;
+                justify-content: space-between;
                 //text-decoration-line: underline;
                 // padding: rem(5) rem(0) rem(15);
                 border-bottom: 2px solid grey;
                 font-family: $principalFont;
                 font-weight: 700;
                 margin-bottom: 8px;
+                &-title {
+                  display: inline;
+                }
+                &-addFavorite{
+                  display: inline;
+                  border: 1px solid white;
+                  border-radius: 5px;
+                  padding: 3px;
+                  font-size: 14px;
+                  font-weight: 300;
+                }
               }
               &-average {
                 .star {

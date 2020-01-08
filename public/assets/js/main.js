@@ -115,12 +115,12 @@ async function handlerSearch(event) {
     const headerContainer = document.createElement('div');
     headerContainer.classList.add('main__lists__searchList-container-liContainer-description-header');
     const addToFavorite = document.createElement('div');
-    addToFavorite.classList.add('main__lists__searchList-container-liContainer-description-header-addFavorite');
-    addToFavorite.innerHTML = `Add to favorites`;
+    addToFavorite.classList.add('main__lists__searchList-container-liContainer-description-header-span-addFavorite');
+    addToFavorite.innerHTML = `+ favorite`;
 
     const span = document.createElement('span');
     span.classList.add('main__lists__searchList-container-liContainer-description-header-span');
-    span.innerHTML = serieItem.show.name;
+    span.innerHTML = `<div class="main__lists__searchList-container-liContainer-description-header-span-title">${serieItem.show.name}<div>`;
     span.appendChild(addToFavorite);
 
     serieObject.name = serieItem.show.name;
