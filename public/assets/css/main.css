@@ -143,6 +143,7 @@
 }
 
 .main__lists__searchList-container-liContainer {
+  overflow: hidden;
   border-radius: 5px;
   margin: 0.9375rem 0.75rem 1.25rem;
   background-color: #16252f;
@@ -192,9 +193,8 @@
   width: 100%;
   display: block;
   padding-bottom: 5px;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
   border-bottom: 2px solid grey;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
@@ -202,16 +202,27 @@
 }
 
 .main__lists__searchList-container-liContainer-description-header-span-title {
-  display: inline;
+  display: inline-block;
+  width: 50%;
 }
 
 .main__lists__searchList-container-liContainer-description-header-span-addFavorite {
-  display: inline;
-  border: 1px solid white;
+  width: 50%;
+  text-align: right;
+  display: inline-block;
   border-radius: 5px;
   padding: 3px;
   font-size: 14px;
   font-weight: 300;
+  color: white;
+}
+
+.main__lists__searchList-container-liContainer-description-header-span-addFavorite:hover {
+  color: #eec11b;
+}
+
+.main__lists__searchList-container-liContainer-description-header-span-addFavorite .far {
+  color: #eec11b;
 }
 
 .main__lists__searchList-container-liContainer-description-header-average .star {
@@ -277,6 +288,7 @@
 }
 
 .main__lists__favoriteList-favoriteItem {
+  overflow: hidden;
   border-radius: 0.3125rem;
   width: 12.875rem;
   height: 295px;

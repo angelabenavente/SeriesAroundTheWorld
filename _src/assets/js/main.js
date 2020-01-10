@@ -116,7 +116,7 @@ async function handlerSearch(event) {
     headerContainer.classList.add('main__lists__searchList-container-liContainer-description-header');
     const addToFavorite = document.createElement('div');
     addToFavorite.classList.add('main__lists__searchList-container-liContainer-description-header-span-addFavorite');
-    addToFavorite.innerHTML = `+ favorite`;
+    addToFavorite.innerHTML = `Add <i class="fas fa-heart"></i> favorite `;
 
     const span = document.createElement('span');
     span.classList.add('main__lists__searchList-container-liContainer-description-header-span');
